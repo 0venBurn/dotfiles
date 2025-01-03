@@ -1,0 +1,58 @@
+{
+  "cursor_blink": false,
+  "cursor_shape": "block",
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620"
+    },
+    "version": "2"
+  },
+  "show_inline_completions": false,
+  "project_panel": {
+    "dock": "left"
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50
+  },
+  "theme": "Gruvbox Dark Soft",
+  "scrollbar": {
+    "show": "never"
+  },
+  "vertical_scroll_margin": 0,
+  "tab_bar": { "show": true },
+  "toolbar": { "breadcrumbs": true, "quick_actions": false },
+  "vim_mode": true,
+
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python.analysis": {
+          "diagnosticMode": "workspace",
+          "typeCheckingMode": "strict"
+        },
+        "python": {
+          "pythonPath": ".venv/bin/python"
+        }
+      }
+    }
+  },
+
+  "ui_font_family": "IBM Plex Mono",
+  "buffer_font_family": "IBM Plex Mono",
+  "terminal": {
+    "font_family": "MesloLGS NF"
+  },
+  "autosave": "on_window_change",
+  "auto_update": true,
+  "relative_line_numbers": true,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_multiline_find": true
+  }
+}

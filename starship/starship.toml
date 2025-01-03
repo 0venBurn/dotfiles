@@ -1,0 +1,67 @@
+format = """
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$python\
+$conda\
+$line_break\
+$character"""
+
+# Define Gruvbox Dark Hard colors
+palette = "gruvbox"
+
+[palettes.gruvbox]
+bg_hard = "#1d2021"     # Dark hard background
+fg = "#ebdbb2"          # Light foreground
+gray = "#928374"        # Gray/bright-black
+yellow = "#d79921"      # Yellow
+green = "#98971a"       # Green
+aqua = "#689d6a"        # Aqua/cyan
+red = "#cc241d"         # Red
+orange = "#d65d0e"      # Orange
+
+
+[hostname]
+style = "fg:green"
+format = "[@$hostname]($style)"
+
+[directory]
+style = "fg:yellow bold"  # Made yellow to pop against the dark background
+
+[character]
+success_symbol = "[❯](green)"    # Changed to green for Gruvbox consistency
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "fg:aqua"              # Changed to aqua for better visibility
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)]($style) ($ahead_behind$stashed)]($style)"
+style = "fg:green"             # Changed to green for Gruvbox feel
+conflicted = ""
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "fg:yellow"            # Changed to yellow
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "fg:aqua"              # Changed to aqua
+
+[python]
+format = "[$virtualenv]($style) "
+style = "fg:green"             # Changed to green
+
+[conda]
+format = "[$environment]($style) "
+style = "fg:aqua"             # Changed to green

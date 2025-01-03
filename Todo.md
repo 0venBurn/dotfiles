@@ -1,0 +1,2 @@
+- Create playbooks for mac & linux
+- Create playbooks dotfiles script
