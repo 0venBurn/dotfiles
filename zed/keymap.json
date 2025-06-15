@@ -1,0 +1,170 @@
+[
+  {
+    "context": "Dock || Terminal || Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-t": "tab_switcher::Toggle"
+    }
+  },
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      // This is identical to the binding in the base keymap, but the vim bindings above to
+      // "vim::Tab" shadow it, so it needs to be bound again.
+      "ctrl-u": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {}
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in normal & visual mode
+
+      "ctrl-t": "tab_switcher::Toggle",
+
+      "shift-k": "editor::MoveLineUp",
+      "shift-j": "editor::MoveLineDown"
+    }
+  },
+
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      "space c t": "editor::ToggleEditPrediction",
+      "space g b": "git::Blame",
+      "space w w": "workspace::Save",
+
+      "space q q": "pane::CloseActiveItem",
+
+      "space o": "tab_switcher::Toggle",
+
+      "space c a": "editor::ToggleCodeActions",
+      "space p": [
+        "projects::OpenRecent",
+        {
+          "create_new_window": false
+        }
+      ],
+
+      "space s v": "pane::SplitLeft",
+      "space s c": "workspace::CloseInactiveTabsAndPanes",
+      "space g g": "editor::Hover",
+      // "down": ["workspace::SendKeystrokes", "4 j"]
+      // "up": ["workspace::SendKeystrokes", "4 k"]
+      "space x x": "diagnostics::Deploy",
+      "space g n": "editor::GoToDiagnostic",
+      "space g p": "editor::GoToPreviousDiagnostic",
+      "g c": "editor::ToggleComments",
+      "space g i": "editor::GoToImplementation",
+      "space f g": "workspace::NewSearch",
+
+      "ctrl-t": "tab_switcher::Toggle",
+
+      "space f f": "file_finder::Toggle",
+
+      "space a a": "workspace::ToggleRightDock",
+      "space e e": "workspace::ToggleLeftDock",
+      "ctrl-shift-j": "workspace::ToggleBottomDock",
+      "space g u": "git_panel::ToggleFocus",
+      "space e f": "project_panel::ToggleFocus",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-shift-j": "workspace::ToggleBottomDock",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-t": "tab_switcher::Toggle",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "h": "project_panel::CollapseSelectedEntry",
+
+      "space p": [
+        "projects::OpenRecent",
+        {
+          "create_new_window": false
+        }
+      ],
+      "space o": "tab_switcher::Toggle",
+      "l": "project_panel::ExpandSelectedEntry",
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "o": "menu::Confirm",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "r": "project_panel::Rename",
+      "z c": "project_panel::CollapseSelectedEntry",
+      "z o": "project_panel::ExpandSelectedEntry",
+      "x": "project_panel::Cut",
+      "space f f": "file_finder::Toggle",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "d": "project_panel::Delete",
+      "a": "project_panel::NewFile",
+      "D": "project_panel::NewDirectory"
+    }
+  },
+
+  {
+    "context": "Workspace  && Editor && vim_mode == visual && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-t": "tab_switcher::Toggle"
+      // visual, visual line & visual block modes
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "up": "editor::ContextMenuPrevious",
+      "ctrl-p": "editor::ContextMenuPrevious",
+      "down": "editor::ContextMenuNext",
+      "ctrl-n": "editor::ContextMenuNext",
+      "pageup": "editor::ContextMenuFirst",
+      "pagedown": "editor::ContextMenuLast"
+    }
+  },
+
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in insert mode
+      //
+      "ctrl-a": "editor::AcceptPartialCopilotSuggestion",
+
+      "ctrl-t": "tab_switcher::Toggle",
+      // e.g.
+      "j k": "vim::SwitchToNormalMode" // remap jj in insert mode to escape.
+    }
+  },
+
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      // put key-bindings here (in addition to above) if you want them to
+      // work when no editor exists
+      // e.g.
+      "ctrl-t": "tab_switcher::Toggle",
+      "space f": "file_finder::Toggle"
+    }
+  }
+]

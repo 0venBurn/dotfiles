@@ -1,14 +1,18 @@
 {
-  "cursor_blink": false,
+  "buffer_font_size": 22.0,
+  "icon_theme": "Colored Zed Icons Theme Dark",
   "cursor_shape": "block",
-  "assistant": {
+  "hover_popover_enabled": false,
+  "cursor_blink": false,
+  "agent": {
+    "default_profile": "write",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620"
+      "provider": "copilot_chat",
+      "model": "claude-3.7-sonnet"
     },
     "version": "2"
   },
-  "show_inline_completions": false,
+  "show_edit_predictions": false,
   "project_panel": {
     "dock": "left"
   },
@@ -20,7 +24,7 @@
     "edit_debounce_ms": 700,
     "scroll_debounce_ms": 50
   },
-  "theme": "Gruvbox Dark Soft",
+  "theme": "Gruvbox Dark Hard",
   "scrollbar": {
     "show": "never"
   },
@@ -42,7 +46,6 @@
       }
     }
   },
-
   "ui_font_family": "IBM Plex Mono",
   "buffer_font_family": "IBM Plex Mono",
   "terminal": {
