@@ -27,7 +27,7 @@ Then implement the requested component or change, following:
 
 ### 2. Test — Run the test suite
 
-Run tests using the command documented in `@test.md`.
+Run tests using the command documented in `@testing.md`.
 
 If tests fail:
 

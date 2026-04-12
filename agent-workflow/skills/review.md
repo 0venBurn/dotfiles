@@ -30,7 +30,7 @@ Do not review the diff in isolation. Read the surrounding code to understand:
 - What invariants or assumptions does the broader system rely on?
 - How does data flow through the affected area?
 
-Also read `@docs.mdc` to understand established patterns and conventions before evaluating whether changes conform to them.
+Also read `@docs/` to understand established patterns and conventions before evaluating whether changes conform to them.
 
 ### 3. Review — Critical issues only
 
