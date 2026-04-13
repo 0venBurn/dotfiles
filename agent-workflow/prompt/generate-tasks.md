@@ -12,9 +12,9 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
 
 ## Process
 
-1.  **Receive Requirements:** The user provides a feature request, task description, or points to existing documentation
+1.  **Receive Requirements:** The primary inputs should be `prd-[feature-name].md` and `tech-spec-[feature-name].md` from `/tasks/` if they exist. Otherwise accept the prompt given.
 2.  **Analyze Requirements:** The AI analyzes the functional requirements, user needs, and implementation scope from the provided information
-3.  **Phase 1: Generate Parent Tasks:** Based on the requirements analysis, create the file and generate the main, high-level tasks required to implement the feature. **IMPORTANT: Always ask if it's necessary to add task 0.0 "Create feature branch" as the first task.** Use your judgement on how many additional high-level tasks to use. It's likely to be about 5. Present these tasks to the user in the specified format (without sub-tasks yet). Inform the user: "I have generated the high-level tasks based on your requirements. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
+3.  **Phase 1: Generate Parent Tasks:** Based on the requirements analysis, create the file and generate the main, high-level tasks required to implement the feature. **IMPORTANT: Always ask if it's necessary to add task [] 0.0 "Create feature branch" as the first task.** Use your judgement on how many additional high-level tasks to use. It's likely to be about 5. Present these tasks to the user in the specified format (without sub-tasks yet). Inform the user: "I have generated the high-level tasks based on your requirements. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
 4.  **Wait for Confirmation:** Pause and wait for the user to respond with "Go".
 5.  **Phase 2: Generate Sub-Tasks:** Once the user confirms, break down each parent task into smaller, actionable sub-tasks necessary to complete the parent task. Ensure sub-tasks logically follow from the parent task and cover the implementation details implied by the requirements.
 6.  **Identify Relevant Files:** Based on the tasks and requirements, identify potential files that will need to be created or modified. List these under the `Relevant Files` section, including corresponding test files if applicable.
@@ -37,12 +37,21 @@ The generated task list _must_ follow this structure:
 
 ### Notes
 
-- Unit tests should typically be placed alongside the code files they are testing (e.g., `MyComponent.tsx` and `MyComponent.test.tsx` in the same directory).
-- Use `npx jest [optional/path/to/test/file]` to run tests. Running without a path executes all tests found by the Jest configuration.
+- Unit tests placed alongside source files they test
+- See `docs/testing.md` for test runner commands and conventions
 
 ## Instructions for Completing Tasks
 
-**IMPORTANT:** As you complete each task, you must check it off in this markdown file by changing `- [ ]` to `- [x]`. This helps track progress and ensures you don't skip any steps.
+**IMPORTANT:** As you complete each task, you must check it off by changing `- [ ]` to `- [x]`.
+
+Before starting work, read `AGENTS.md` for the full workflow. Per section:
+
+1. Read relevant skill from `/agent/skills/` before starting
+2. Implement
+3. Verify (tests pass, linter clean)
+4. Review (skip trivial; required for business logic, auth, UI, data)
+5. Commit
+6. Check off all sub-tasks
 
 Example:
 
@@ -52,7 +61,7 @@ Update the file after completing each sub-task, not just after completing an ent
 
 ## Tasks
 
-- [] 0.0 Create feature branch
+- [ ] 0.0 Create feature branch
   - [ ] 0.1 Create and checkout a new branch for this feature (e.g., `git checkout -b feature/[feature-name]`)
 - [ ] 1.0 Parent Task Title
   - [ ] 1.1 [Sub-task description 1.1]

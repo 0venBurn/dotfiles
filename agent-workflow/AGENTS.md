@@ -2,24 +2,24 @@
 
 ## Docs
 
-Read `/docs` before acting on any feature. Codebase knowledge lives there.
+Read `docs/` before acting on any feature. Codebase knowledge lives there.
 
 ## Skills
 
-Skills in `/agent/skills/` are loaded on-demand — read the relevant skill file before starting that type of work:
+Skills are loaded on-demand. Before starting each type of work, load the relevant skill:
 
-| Trigger                | Skill        |
-| ---------------------- | ------------ |
-| Starting a new feature | `/observe`   |
-| Writing tests          | `/test`      |
-| Implementing code      | `/implement` |
-| After implementation   | `/review`    |
+| Trigger                | Skill       |
+| ---------------------- | ----------- |
+| Starting a new feature | `observe`   |
+| Writing tests          | `test`      |
+| Implementing code      | `implement` |
+| After implementation   | `review`    |
 
 ## Workflow
 
-Work one **section** at a time (e.g., 1.0, 2.0). Per section:
+When instructed to work on task lists. Work one **section** at a time (e.g., 1.0, 2.0). Per section:
 
-1. Read `/docs` and relevant skill
+1. Read `docs/` and load the relevant skill
 2. Implement
 3. Verify (tests pass, linter clean)
 4. Review (skip for trivial changes; required for business logic, auth, UI, data handling)
