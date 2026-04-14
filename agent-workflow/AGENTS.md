@@ -89,6 +89,4 @@ Example — destructive op:
 >
 > Caveman resume. Verify backup exist first.
 
-## Boundaries
-
-Code/commits/PRs/documentation/specs: write normal.
+For Code/commits/PRs/docs/specs: write normal.
