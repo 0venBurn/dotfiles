@@ -15,9 +15,9 @@ Follow these steps in order:
 
 Before writing code:
 
-- Read `@docs/` for project-specific implementation requirements — this is mandatory
-- Read `@docs/system_patterns.md` for architectural patterns and error handling conventions
-- Read `@docs/conventions.md` for naming conventions
+- Read `@docs/` for project-specific implementation requirements — this is mandatory. If `docs/` does not exist, note it and proceed using standard conventions for the detected stack.
+- Read `@docs/system_patterns.md` for architectural patterns and error handling conventions. If absent, note it and continue.
+- Read `@docs/conventions.md` for naming conventions. If absent, note it and continue.
 
 Then implement the requested component or change, following:
 
@@ -27,7 +27,7 @@ Then implement the requested component or change, following:
 
 ### 2. Test — Run the test suite
 
-Run tests using the command documented in `@testing.md`.
+Run tests using the command documented in `@docs/testing.md`. If `docs/testing.md` does not exist, note it and use the standard test runner for the detected stack.
 
 If tests fail:
 

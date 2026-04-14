@@ -23,7 +23,7 @@ Do not chase multiple hypotheses at once. Commit to the most likely one first.
 
 ### 2. Prove — Write a targeted unit test
 
-Consult `@docs/testing.md` for project-specific testing conventions before writing anything.
+Consult `@docs/testing.md` for project-specific testing conventions before writing anything. If `docs/testing.md` does not exist, note it and use standard conventions for the detected stack.
 
 Write a single unit test that:
 

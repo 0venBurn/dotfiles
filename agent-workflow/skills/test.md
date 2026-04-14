@@ -11,7 +11,7 @@ A TDD-style process for writing comprehensive, correctly failing tests before an
 
 ### 1. Read — Understand the testing conventions
 
-**Always read `@docs/testing.md` first.** Do not write a single line of test code before doing this. It defines how tests are structured, what utilities exist, and how to run them in this project.
+Read `@docs/testing.md` first. If `docs/testing.md` does not exist, note it and use standard conventions for the detected stack (e.g. pytest for Python, Jest for TypeScript, the built-in test runner for Go). Do not write a single line of test code before completing this step.
 
 ### 2. Check — Find existing tests
 
@@ -20,7 +20,7 @@ Search for existing tests covering the subject. If found:
 - Extend them to cover the new cases rather than creating a new file
 - Match the existing style, structure, and naming exactly
 
-If no existing tests are found, create a new test file following the conventions from `@docs/testing.md`.
+If no existing tests are found, create a new test file following the conventions from `@docs/testing.md` (or the detected stack default).
 
 ### 3. Write — Cover all cases
 
@@ -36,7 +36,7 @@ Each test should be self-contained and clearly named so failure messages are rea
 
 ### 4. Run — Confirm tests fail
 
-Run tests using the command documented in `@docs/testing.md` (e.g. `pytest`, `./gradlew test`, `cargo test` — whatever this project uses).
+Run tests using the command documented in `@docs/testing.md`.
 
 Tests **must fail** at this stage — there is no implementation yet. If a test passes without implementation, it is not testing anything real. Investigate and fix it before continuing.
 

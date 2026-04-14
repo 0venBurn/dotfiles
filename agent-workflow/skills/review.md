@@ -11,16 +11,13 @@ A focused code review process targeting critical issues only. Style preferences 
 
 ### 1. Get Changes — Read the diff
 
-Use git read commands to understand what changed:
+Run the following to get the full picture of what changed on this branch:
 
 ```bash
-git status                  # see modified files
-git diff                    # unstaged changes
-git diff --staged           # staged changes
-git diff main...HEAD        # all branch changes vs main
+git diff main...HEAD
 ```
 
-Use whichever commands give the most complete picture of the changes under review.
+If the branch base isn't `main`, substitute the appropriate base ref. For staged-only or unstaged-only review, use `git diff --staged` or `git diff` respectively.
 
 ### 2. Understand Context — Go beyond the diff
 
@@ -30,7 +27,7 @@ Do not review the diff in isolation. Read the surrounding code to understand:
 - What invariants or assumptions does the broader system rely on?
 - How does data flow through the affected area?
 
-Also read `@docs/` to understand established patterns and conventions before evaluating whether changes conform to them.
+Also read `@docs/` to understand established patterns and conventions before evaluating whether changes conform to them. If `docs/` does not exist, note it and review against standard conventions for the detected stack.
 
 ### 3. Review — Critical issues only
 
