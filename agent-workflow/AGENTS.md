@@ -20,8 +20,6 @@ Skills are loaded on-demand. Match the intent signal to the skill:
 | Generate a technical specification                         | `generate-tech-spec` |
 | Generate a task list from requirements                     | `generate-tasks`     |
 
-Skills live in `.claude/skills/`. Load the relevant one before starting work.
-
 ## Commands
 
 Commands are invoked directly by the human with a slash. Do not load them as skills.
@@ -29,8 +27,6 @@ Commands are invoked directly by the human with a slash. Do not load them as ski
 | Command    | What it does                                |
 | ---------- | ------------------------------------------- |
 | `grill-me` | Stress-test a plan via structured interview |
-
-Commands live in `.claude/commands/`.
 
 ## Planning pipeline
 
