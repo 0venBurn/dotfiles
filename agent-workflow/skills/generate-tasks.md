@@ -1,6 +1,6 @@
 ---
 name: generate-tasks
-description: Generate a detailed implementation task list for a feature from its specs. Use this skill after a PRD and tech spec exist, or when the user wants a step-by-step task breakdown before implementing. Triggers include "generate tasks", "create a task list", "break this into tasks", or when called as part of the planning pipeline after generate-tech-spec. Final step in the planning pipeline.
+description: Generate a detailed implementation task list for a feature from its specs. Use this skill after a PRD and tech spec exist, or when the user wants a step-by-step task breakdown before implementing. Triggers include "generate tasks", "create a task list", "break this into tasks".
 ---
 
 # Generate Tasks
@@ -9,9 +9,7 @@ Produce a detailed, ordered task list that guides a developer through implementi
 
 ## Pipeline mode
 
-Task generation is always the final planning step. Stop after saving the task list regardless of whether `--auto` or "full pipeline" was specified.
-
-**Auto mode only:** skip the Phase 1 pause (see below) and include the feature branch task by default.
+Task generation is always the final planning step. Stop after saving the task list.
 
 ## Process
 
@@ -24,8 +22,6 @@ Check `specs/[feature-name]/` for `prd.md` and `tech-spec.md`. Use both as prima
 Create the file and generate the main high-level tasks. Aim for ~5 parent tasks. Always ask whether to include `0.0 Create feature branch` as the first task — unless in auto mode, in which case include it by default.
 
 Present the parent tasks to the user and say: "High-level tasks generated. Ready to generate sub-tasks? Respond with 'Go' to proceed."
-
-Then wait — unless in auto mode, in which case proceed immediately to Phase 2.
 
 ### 3. Phase 2 — Generate sub-tasks
 
@@ -56,16 +52,6 @@ Save as `specs/[feature-name]/tasks.md`. Create the feature folder if it doesn't
 
 **IMPORTANT:** As you complete each task, check it off by changing `- [ ]` to `- [x]`.
 
-Before starting work, read `AGENTS.md` for the full workflow. Per section:
-
-1. Load the `plan` skill and read specs
-2. Load the relevant skill for the work
-3. Implement
-4. Verify (tests pass, linter clean)
-5. Review (skip trivial; required for business logic, auth, UI, data)
-6. Commit
-7. Check off all sub-tasks
-
 Update the file after completing each sub-task, not just after completing an entire parent task.
 
 ## Tasks
@@ -82,4 +68,3 @@ Update the file after completing each sub-task, not just after completing an ent
 ## Constraints
 
 - Do NOT implement anything.
-- Do NOT skip Phase 1 pause unless `--auto` or "full pipeline" was specified.

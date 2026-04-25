@@ -1,61 +1,74 @@
 ---
 name: debug
-description: Diagnose and prove the root cause of a bug using a structured debug→prove→run→report process. Use this skill when the user provides a bug description or stack trace and wants to identify the root cause — NOT fix it. Triggers include phrases like "find the root cause", "debug this", "prove the issue", "diagnose this bug", or when a bug description and working context are both provided. Always follow this skill for any bug investigation task, even if the user's request seems straightforward.
+description: Diagnose and prove the root cause of a bug without fixing production code. Use this skill when the user asks to find root cause, debug, diagnose, prove an issue, explain why a bug happens, or reproduce a failure. If the user asks to fix the bug too, diagnose first, then use the implement skill for the fix.
 ---
 
 # Debug
 
-A structured process for diagnosing bugs and proving the root cause with a failing test — without fixing anything.
+Diagnose bugs by proving root cause before any fix is attempted.
 
 ## Process
 
-Follow these four steps in order:
+Follow these steps in order.
 
-### 1. Debug — Identify the most likely cause
+### 1. Understand failure
 
-Read the bug description and working context carefully. Form a hypothesis about the root cause. Consider:
+Read the bug description and working context carefully. Gather the smallest useful set of files, logs, tests, docs, or commands needed to understand the failing path.
 
-- What code path is the failure occurring in?
+Identify:
+
+- Where the failure occurs
+- What expected behavior is
+- What actual behavior is
+- What input, state, or environment triggers it
+
+### 2. Form one hypothesis
+
+Choose the most likely root cause first. Consider:
+
 - What invariant or assumption is being violated?
-- Is this a data issue, logic issue, timing issue, or interface mismatch?
+- Is this a data issue, logic issue, timing issue, environment issue, or interface mismatch?
+- What changed recently in the affected path?
 
-Do not chase multiple hypotheses at once. Commit to the most likely one first.
+Do not chase multiple hypotheses at once. Commit to one, then prove or disprove it.
 
-### 2. Prove — Write a targeted unit test
+### 3. Prove root cause
 
-Consult `@docs/testing.md` for project-specific testing conventions before writing anything. If `docs/testing.md` does not exist, note it and use standard conventions for the detected stack.
+Use the strongest practical evidence available:
 
-Write a single unit test that:
+- Targeted unit/integration test
+- Existing failing test
+- Minimal reproduction
+- Runtime trace, log, or command output
+- Direct code-path evidence when tests are not practical
 
-- Directly exercises the suspected failure path
-- Passes if the hypothesis is **wrong**
-- **Fails** if the hypothesis is **correct** (i.e., it proves the bug exists)
+If writing a test, consult `@docs/testing.md` first. If docs do not exist, use detected project conventions.
 
-The test should be minimal — isolate only what's needed to demonstrate the root cause. Do not write a fix. Do not refactor.
+A proof test should be minimal and directly exercise the suspected failure path. It should fail or expose the issue when the hypothesis is correct.
 
-### 3. Run — Execute the test
+Do not write the fix. Do not refactor.
 
-Run the test. Evaluate the result:
+### 4. Iterate if needed
 
-- **Test fails as expected** → hypothesis confirmed, proceed to report
-- **Test passes unexpectedly** → hypothesis is wrong; continue investigating with new observations until you find the actual cause
+If evidence disproves the hypothesis, use the new observation to form the next most likely hypothesis and repeat.
 
-Do not stop until a test concretely proves the diagnosis.
+Continue until root cause is proven or blocked by missing information/tooling.
 
-### 4. Report — Output a short summary
+### 5. Report
 
-Respond with only:
+Output concise diagnosis:
 
-```
+```text
 ROOT CAUSE: [Brief description]
-TEST RESULT: [Pass/Fail status]
-EVIDENCE: [1-2 sentences explaining how the test proves the cause]
+EVIDENCE: [Test/command/file/line evidence proving it]
+NEXT STEP: [Smallest fix direction, or what is blocked]
 ```
 
-Do not propose fixes. Do not include extra commentary.
+If user asked to fix too, stop after diagnosis and state that implementation should happen through `implement` using the proven cause.
 
 ## Constraints
 
-- **Do NOT fix the bug.** Investigation only.
-- **Do NOT output more than the report format** once the cause is proven.
-- If the first test doesn't confirm the hypothesis, iterate — observation → new hypothesis → new test — until proven.
+- **Diagnose only.** Do not edit production code or apply fixes in this skill.
+- **Do not skip proof.** Use a targeted test, reproduction, command output, logs, or clear code-path evidence.
+- **One hypothesis at a time.** Avoid shotgun debugging.
+- **No fake verification.** Only cite evidence actually gathered.

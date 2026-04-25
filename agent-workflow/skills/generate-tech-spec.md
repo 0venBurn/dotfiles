@@ -1,18 +1,11 @@
 ---
 name: generate-tech-spec
-description: Generate a Technical Specification for a feature — defining how it's built, including data models, interfaces, data flows, and infrastructure. Use this skill after a PRD exists, or when the user wants to define implementation details before writing code. Triggers include "generate a tech spec", "write a technical specification", "spec out how to build this", or when called as part of the planning pipeline after generate-prd. Part of the planning pipeline — runs after generate-prd, before generate-tasks.
+description: Generate a Technical Specification for a feature — defining how it's built, including data models, interfaces, data flows, and infrastructure. Use this skill after a PRD exists, or when the user wants to define implementation details before writing code. Triggers include "generate a tech spec", "write a technical specification", "spec out how to build this", or when called as part of the planning pipeline after generate-prd.
 ---
 
 # Generate Tech Spec
 
 Produce a Technical Specification that defines how the feature is built — explicit enough that implementation choices are unambiguous.
-
-## Pipeline mode
-
-Check whether the prompt contains `--auto` or "full pipeline":
-
-- **Default (human-gated):** Stop after saving the tech spec. Show it to the human and wait for confirmation before proceeding to `generate-tasks`.
-- **Auto mode:** After saving the tech spec, continue directly into `generate-tasks` without stopping. Do not re-ask questions already answered in the PRD step.
 
 ## Process
 
@@ -54,12 +47,6 @@ Using the PRD and answers, produce a tech spec with these sections:
 
 Save as `specs/[feature-name]/tech-spec.md`. Create the feature folder if it doesn't exist.
 
-### 5. Pause or continue
-
-- **Default:** Show the tech spec and wait for the human to confirm before proceeding.
-- **Auto mode:** Continue directly to `generate-tasks`.
-
 ## Constraints
 
 - Do NOT start implementing.
-- Do NOT proceed to task generation without human confirmation unless `--auto` or "full pipeline" was specified.

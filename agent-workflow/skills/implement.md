@@ -1,53 +1,100 @@
 ---
 name: implement
-description: Implement a feature or code change following project documentation, then verify it with tests, linting, and formatting before finishing. Use this skill when the user asks to implement a component, feature, or code change and wants it done correctly end-to-end. Triggers include "implement this", "add this feature", "make the tests pass", "build this component", or any implementation task that references docs, patterns, or conventions. Always use this skill for implementation tasks — even simple ones benefit from the verification checklist.
+description: Implement a feature, bug fix, refactor, or code change, then verify before finishing. Use this skill when the user asks to implement, add, build, change, refactor, make tests pass, or complete task-list work.
 ---
 
-# Implement and Verify
+# Implement
 
-A structured process for implementing features correctly and verifying them before finishing.
+Implement the requested change with enough context, minimal ceremony, and real verification.
 
 ## Process
 
-Follow these steps in order:
+### 1. Understand intent
 
-### 1. Implement — Build the requested feature or change
+Use the human prompt, issue, failing test, or current task-list section as the brief.
 
-Before writing code:
+Identify:
 
-- Read `@docs/` for project-specific implementation requirements — this is mandatory. If `docs/` does not exist, note it and proceed using standard conventions for the detected stack.
-- Read `@docs/system_patterns.md` for architectural patterns and error handling conventions. If absent, note it and continue.
-- Read `@docs/conventions.md` for naming conventions. If absent, note it and continue.
+- Requested outcome
+- Files or behavior likely affected
+- Tests or checks that prove completion
+- Any blocking ambiguity
 
-Then implement the requested component or change, following:
+Ask one focused question only when a missing decision would change the implementation. Otherwise proceed.
 
-- **Patterns** from `@docs/system_patterns.md`
-- **Naming** from `@docs/conventions.md`
-- **Error handling** from `@docs/system_patterns.md`
+### 2. Gather context
 
-### 2. Test — Run the test suite
+Read enough context for the request:
 
-Run tests using the command documented in `@docs/testing.md`. If `docs/testing.md` does not exist, note it and use the standard test runner for the detected stack.
+- For tiny/local changes, read directly relevant files and nearby tests.
+- For normal features, bug fixes, refactors, or test-backed work, read relevant docs, code paths, and tests.
+- For risky or broad work, read relevant `docs/` and `specs/[feature-name]/` before editing.
 
-If tests fail:
+Prefer these docs when present and relevant:
 
-- Fix the implementation (not the tests) until all pass
-- Do not move on with failing tests
+- `docs/testing.md`
+- `docs/system_patterns.md`
+- `docs/conventions.md`
+- feature-specific docs or specs
 
-### 3. Verify — Pre-finish checklist
+If docs do not exist, note it and use detected project conventions plus nearby patterns.
 
-Run through each item before responding:
+### 3. Implement change
 
-- [ ] Linter passes — run linter, fix all errors
-- [ ] Formatter applied — run formatter if documented in `@docs/formatting.md`
-- [ ] All tests pass
-- [ ] Code follows project conventions (naming, patterns, error handling)
-- [ ] No debug code, console logs, or temporary comments left behind
+Make the smallest correct change that satisfies the brief.
 
-Do not skip any checklist item. If a tool isn't documented, note it and continue.
+Follow discovered project patterns for:
+
+- file placement and naming
+- data flow and boundaries
+- error handling
+- tests and fixtures
+- formatting and style
+
+Do not rewrite unrelated code. Do not broaden scope without human approval.
+
+### 4. Verify
+
+Run checks that prove the change works:
+
+- For tiny/local changes, run the narrowest meaningful check if available; otherwise explain manual inspection.
+- For normal code changes, run targeted tests for touched behavior; run lint/format when documented or relevant.
+- For risky or broad changes, run stronger relevant test coverage, lint, formatter, and review the diff before finishing.
+
+If verification fails because of the implementation, fix the implementation and rerun relevant checks.
+
+Do not modify tests only to make them pass unless requested behavior legitimately changed expected output.
+
+### 5. Review before finish
+
+Check before responding:
+
+- [ ] Relevant tests/checks passed, or skipped with reason
+- [ ] Lint/format run when required or relevant
+- [ ] Code follows project conventions and nearby patterns
+- [ ] No debug code, stray logs, or temporary comments remain
+- [ ] Scope stayed within requested change
+
+For business logic, auth, UI, data handling, or other non-trivial changes, review own diff before final response.
+
+### 6. Task-list sections only
+
+When working from a task list section, follow `AGENTS.md` section workflow:
+
+1. Read relevant `specs/[feature-name]/` documents
+2. Implement current section only
+3. Verify
+4. Review when required
+5. Commit
+6. Mark section complete (`- [ ]` → `- [x]`)
+
+Never start next section before current section commit.
+
+On unexpected failure mid-section, stop and report current state. Do not attempt recovery without instruction.
 
 ## Constraints
 
-- **Always read the docs before writing code.** Do not assume conventions.
-- **Do not modify tests** to make them pass — fix the implementation.
-- **Do not finish until the checklist is complete.**
+- **Enough context first.** Read docs/code appropriate to the request before editing.
+- **No planning ceremony by default.** PRDs, tech specs, and task lists are only for explicit human request.
+- **No fake verification.** Only claim checks passed when actually run.
+- **No unrelated edits.** Keep change focused on requested outcome.

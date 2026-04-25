@@ -2,16 +2,15 @@
 
 ## Docs
 
-Read `docs/` before acting on any feature. Codebase knowledge lives there.
+Read docs when they help current intent. Small/local work needs nearby files only. Broader/riskier work needs relevant docs and specs.
 
 ## Skills
 
-Skills are loaded on-demand. Match the intent signal to the skill:
+Skills are loaded on-demand. Match the human's intent signal to the skill:
 
 | Intent signal                                              | Skill                |
 | ---------------------------------------------------------- | -------------------- |
 | Explore codebase, map architecture, update docs            | `observe`            |
-| Plan a feature, read specs, prepare to implement           | `plan`               |
 | Write tests, add coverage, TDD, verify bug exists          | `test`               |
 | Implement feature, build component, make tests pass        | `implement`          |
 | Review diff, check changes, review PR                      | `review`             |
@@ -19,36 +18,25 @@ Skills are loaded on-demand. Match the intent signal to the skill:
 | Generate a PRD, write product requirements                 | `generate-prd`       |
 | Generate a technical specification                         | `generate-tech-spec` |
 | Generate a task list from requirements                     | `generate-tasks`     |
+| Grill me and collaborate on design                         | `grill-me`           |
 
-## Commands
+Do not run a long planning pipeline by default. Generate PRDs, tech specs, and task lists only when the human asks for them or asks for a full planning sequence.
 
-Commands are invoked directly by the human with a slash. Do not load them as skills.
+## Context and Verification
 
-| Command    | What it does                                |
-| ---------- | ------------------------------------------- |
-| `grill-me` | Stress-test a plan via structured interview |
+Before acting, use the smallest process that satisfies the request:
 
-## Planning pipeline
+- Tiny/local change: read directly relevant files and nearby tests; make the change; run the narrowest meaningful check if available.
+- Normal feature, bug fix, refactor, or test work: read relevant docs/code paths; use the human prompt or existing issue as the brief; run targeted tests plus lint/format when relevant.
+- Ambiguous, risky, architectural, security/auth/data/payment work: ask clarifying questions when needed; read relevant docs/specs; run stronger verification and review before finishing.
 
-The planning skills (`generate-prd` → `generate-tech-spec` → `generate-tasks`) run with human review gates by default — pause after each document, show it to the human, and wait for confirmation before continuing.
-
-**Exception:** if the prompt contains `--auto` or "full pipeline", chain all three without pausing. Clarifying questions are still asked once at the start; do not re-ask between steps.
-
-Specs are stored under `specs/[feature-name]/`:
-
-```
-specs/
-└── user-auth/
-    ├── prd.md
-    ├── tech-spec.md
-    └── tasks.md
-```
+If the human gives a specific workflow, follow it. If one blocking decision is missing, ask one focused question. Otherwise proceed from the prompt.
 
 ## Workflow
 
 When instructed to work on task lists, work one **section** at a time (e.g., 1.0, 2.0). Per section:
 
-1. Load the `plan` skill and read the relevant `specs/[feature-name]/` documents
+1. Read the relevant `specs/[feature-name]/` documents
 2. Load the relevant skill for the work (implement, test, etc.)
 3. Implement
 4. Verify (tests pass, linter clean)

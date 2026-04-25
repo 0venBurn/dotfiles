@@ -11,13 +11,14 @@ A focused code review process targeting critical issues only. Style preferences 
 
 ### 1. Get Changes — Read the diff
 
-Run the following to get the full picture of what changed on this branch:
+Choose review target from user intent:
 
-```bash
-git diff main...HEAD
-```
+- Branch review: `git diff main...HEAD` (substitute base ref if not `main`)
+- Staged review: `git diff --staged`
+- Unstaged review: `git diff`
+- File review: diff/read the specified files
 
-If the branch base isn't `main`, substitute the appropriate base ref. For staged-only or unstaged-only review, use `git diff --staged` or `git diff` respectively.
+If unclear, default to branch review when on a feature branch; otherwise ask which target to review.
 
 ### 2. Understand Context — Go beyond the diff
 
@@ -48,10 +49,12 @@ If an issue doesn't fall into one of these categories, do not raise it.
 For each critical issue found:
 
 ```
-[CATEGORY] Brief title
+[SEVERITY][CATEGORY] Brief title
 Location: file:line
 Issue: What is wrong and why it matters.
 ```
+
+Severity: `HIGH`, `MEDIUM`, or `LOW`. Only include `LOW` when still critical enough to block/repair.
 
 If no critical issues are found, say so plainly. Do not pad the review.
 
