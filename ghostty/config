@@ -1,5 +1,0 @@
-theme = gruvboxdark
-cursor-style = block
-cursor-style-blink = false
-font-family = "IBM Plex Mono"
-macos-titlebar-style = hidden
