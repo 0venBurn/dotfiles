@@ -32,9 +32,9 @@ Before acting, use the smallest process that satisfies the request:
 
 If the human gives a specific workflow, follow it. If one blocking decision is missing, ask one focused question. Otherwise proceed from the prompt.
 
-## Workflow
+## Spec Driven Development
 
-When instructed to work on task lists, work one **section** at a time (e.g., 1.0, 2.0). Per section:
+When instructed to work on tasks from specs, work one **section** at a time (e.g., 1.0, 2.0). Per section:
 
 1. Read the relevant `specs/[feature-name]/` documents
 2. Load the relevant skill for the work (implement, test, etc.)

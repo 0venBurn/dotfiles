@@ -9,59 +9,58 @@ $conda\
 $line_break\
 $character"""
 
-# Define Gruvbox Dark Hard colors
-palette = "gruvbox"
+palette = "cuimhne"
 
-[palettes.gruvbox]
-bg_hard = "#1d2021"     # Dark hard background
-fg = "#ebdbb2"          # Light foreground
-gray = "#928374"        # Gray/bright-black
-yellow = "#d79921"      # Yellow
-green = "#98971a"       # Green
-aqua = "#689d6a"        # Aqua/cyan
-red = "#cc241d"         # Red
-orange = "#d65d0e"      # Orange
-
+[palettes.cuimhne]
+bg      = "#1A1714"
+fg      = "#F0EBE1"
+subtle  = "#6B6560"
+green   = "#7FA688"
+gold    = "#C4A882"
+sage    = "#A8B898"
+terra   = "#C47A5A"
+mist    = "#8FA89C"
 
 [hostname]
-style = "fg:green"
+style = "fg:sage"
 format = "[@$hostname]($style)"
 
 [directory]
-style = "fg:yellow bold"  # Made yellow to pop against the dark background
+style = "fg:gold bold"
 
 [character]
-success_symbol = "[❯](green)"    # Changed to green for Gruvbox consistency
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+success_symbol = "[❯](green)"
+error_symbol   = "[❯](terra)"
+vimcmd_symbol  = "[❮](green)"
 
 [git_branch]
 format = "[$branch]($style)"
-style = "fg:aqua"              # Changed to aqua for better visibility
+style  = "fg:mist"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)]($style) ($ahead_behind$stashed)]($style)"
-style = "fg:green"             # Changed to green for Gruvbox feel
-conflicted = ""
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
+conflicted = "!"
+untracked  = "?"
+modified   = "●"
+staged     = "+"
+renamed    = "→"
+deleted    = "✗"
+stashed    = "≡"
+ahead      = "↑"
+behind     = "↓"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "fg:yellow"            # Changed to yellow
+style  = "fg:gold"
 
 [cmd_duration]
 format = "[$duration]($style) "
-style = "fg:aqua"              # Changed to aqua
+style  = "fg:mist"
 
 [python]
 format = "[$virtualenv]($style) "
-style = "fg:green"             # Changed to green
+style  = "fg:green"
 
 [conda]
 format = "[$environment]($style) "
-style = "fg:aqua"             # Changed to green
+style  = "fg:sage"

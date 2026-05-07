@@ -1,0 +1,68 @@
+# Font
+font-family = "IBM Plex Mono"
+font-style = Regular
+font-size = 9
+
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+
+# Window
+window-theme = ghostty
+window-padding-x = 14
+window-padding-y = 14
+confirm-close-surface=false
+resize-overlay = never
+gtk-toolbar-style = flat
+
+# Cursor styling
+cursor-style = "block"
+cursor-style-blink = false
+shell-integration-features = no-cursor, ssh-env
+
+# Keyboard bindings
+keybind = shift+insert=paste_from_clipboard
+keybind = control+insert=copy_to_clipboard
+keybind = super+control+shift+alt+arrow_down=resize_split:down,100
+keybind = super+control+shift+alt+arrow_up=resize_split:up,100
+keybind = super+control+shift+alt+arrow_left=resize_split:left,100
+keybind = super+control+shift+alt+arrow_right=resize_split:right,100
+
+mouse-scroll-multiplier = 0.95
+
+# --- core palette ---
+background = #1A1714
+foreground = #F0EBE1
+cursor-color = #C4A882
+cursor-text = #1A1714
+selection-background = #3D3830
+selection-foreground = #F0EBE1
+
+# --- ANSI 0-7 (normal) ---
+palette = 0=#1A1714   
+palette = 1=#C47A5A  
+palette = 2=#7FA688 
+palette = 3=#C4A882
+palette = 4=#8FA89C  
+palette = 5=#B8A898  
+palette = 6=#A8B898 
+palette = 7=#D4CEC6 
+
+# --- ANSI 8-15 (bright) ---
+palette = 8=#3D3830   
+palette = 9=#A05C4A  
+palette = 10=#5C7A64 
+palette = 11=#A8855A 
+palette = 12=#9C9488 
+palette = 13=#9C9488 
+palette = 14=#8FA89C 
+palette = 15=#F0EBE1 
+
+# --- window ---
+window-padding-x = 12
+window-padding-y = 10
+window-decoration = false
+
+# --- cursor ---
+cursor-style = block
+cursor-style-blink = false
