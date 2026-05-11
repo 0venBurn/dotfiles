@@ -58,6 +58,8 @@ Severity: `HIGH`, `MEDIUM`, or `LOW`. Only include `LOW` when still critical eno
 
 If no critical issues are found, say so plainly. Do not pad the review.
 
+If no critical issues are found, say so plainly. Do not pad the review. Write this into a html report and place in @docs/reports with a meaningful name.
+
 ## Constraints
 
 - **Critical issues only.** No style comments, no suggestions, no "consider doing X instead."
