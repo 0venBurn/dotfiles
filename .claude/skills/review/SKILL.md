@@ -56,7 +56,7 @@ Issue: What is wrong and why it matters.
 
 Severity: `HIGH`, `MEDIUM`, or `LOW`. Only include `LOW` when still critical enough to block/repair.
 
-If no critical issues are found, say so plainly. Do not pad the review.
+If no critical issues are found, say so plainly. Do not pad the review. Write this into a html report and place in @docs/reports with a meaningful name.
 
 ## Constraints
 
